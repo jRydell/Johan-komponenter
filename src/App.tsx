@@ -8,7 +8,7 @@ function App() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
-    setProgress(value);
+    setProgress(0 + value);
     confetti({
       particleCount: 50,
       spread: 360,
@@ -25,7 +25,7 @@ function App() {
         value={progress}
       />
 
-      <ProgressBar title="Step 1" percentage={progress} color={"green"} />
+      <ProgressBar title="Progress" percentage={progress} color={"green"} />
       {/* <ProgressBar title="Step 2" percentage={progress} color={"red"} />
       <ProgressBar title="Step 3" percentage={progress} color={"blue"} /> */}
     </>

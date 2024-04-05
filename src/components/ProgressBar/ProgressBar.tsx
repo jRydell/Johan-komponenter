@@ -23,7 +23,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <>
       <div className="ProgressBar">
-        <h2>{title}</h2>
+        <h2>
+          {title}: {progress}
+        </h2>
         <div className="progress-bar-container">
           <div
             style={{ width: `${progress}%`, backgroundColor: color }}
