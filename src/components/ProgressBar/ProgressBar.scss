@@ -1,18 +1,18 @@
-$primary-color: white;
-$secondary-color: greenyellow;
+.ProgressBar {
+  $primary-color: white;
+  $secondary-color: black;
 
+  .progress-bar-container {
+    background-color: $primary-color;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 3px solid $secondary-color;
+    height: 1rem;
+  }
 
+  .progress-bar {
 
-.progress-bar-container {
-  background-color: $primary-color;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 3px solid black;
-  height: 1rem;
-}
-
-.progress-bar {
-  background-color: $secondary-color;
-  height: 100%;
-  transition: width 0.3s ease;
+    height: 100%;
+    transition: width 0.5s ease;
+  }
 }
