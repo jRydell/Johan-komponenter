@@ -1,18 +1,13 @@
 import "./App.scss";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { useState } from "react";
-import confetti from "https://esm.run/canvas-confetti@1";
 
 function App() {
   const [progress, setProgress] = useState(0);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
-    setProgress(0 + value);
-    confetti({
-      particleCount: 50,
-      spread: 360,
-    });
+    setProgress(value);
   };
 
   return (
