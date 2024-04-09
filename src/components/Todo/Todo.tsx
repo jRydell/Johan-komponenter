@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "../Checkbox/Checkbox";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import confetti from "https://esm.run/canvas-confetti@1";
 
 const Todo = () => {
   const [todos, setTodos] = useState([
@@ -23,6 +24,13 @@ const Todo = () => {
     const checkedCount = todos.filter((todo) => todo.isChecked).length;
     const newProgress = Math.floor((checkedCount / todos.length) * 100);
     setProgress(newProgress);
+    if (todos[index].isChecked) {
+      // Trigger confetti
+      confetti({
+        particleCount: 1500,
+        spread: 360,
+      });
+    }
   };
 
   return (
