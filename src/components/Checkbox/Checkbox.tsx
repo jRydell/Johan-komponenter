@@ -3,16 +3,24 @@ import "./Checkbox.scss";
 type CheckProps = {
   title: string;
   big: boolean;
+  isChecked: boolean;
+  onChange: () => void;
 };
 
-const Checkbox = ({ title, big }: CheckProps) => {
+const Checkbox = ({ title, big, isChecked, onChange }: CheckProps) => {
   return (
     <section className="checkbox">
       <label
-        htmlFor="check"
+        htmlFor={title}
         className={big ? "big checkbox__label" : "checkbox__label"}
       >
-        <input type="checkbox" name="checkbox" />
+        <input
+          id={title}
+          type="checkbox"
+          name="checkbox"
+          checked={isChecked}
+          onChange={onChange}
+        />
         {title}
       </label>
     </section>

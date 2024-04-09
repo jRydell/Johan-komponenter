@@ -2,43 +2,46 @@ import { useState } from "react";
 import Checkbox from "../Checkbox/Checkbox";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-function Todo() {
+const Todo = () => {
+  const [todos, setTodos] = useState([
+    { title: "Finish homework", isChecked: false },
+    { title: "Go grocery shopping", isChecked: false },
+    { title: "Call mom", isChecked: false },
+    { title: "Workout for 30 minutes", isChecked: false },
+    { title: "Read a chapter of a book", isChecked: false },
+    { title: "Call mom", isChecked: false },
+    { title: "Workout for 30 minutes", isChecked: false },
+    { title: "Read a chapter of a book", isChecked: false },
+    { title: "Read a chapter of a book", isChecked: false },
+  ]);
   const [progress, setProgress] = useState(0);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    setProgress(value);
-  };
+  const handleCheckboxChange = (index: number) => {
+    todos[index].isChecked = !todos[index].isChecked;
+    setTodos([...todos]);
 
-  let todos = [
-    "Finish homework",
-    "Go grocery shopping",
-    "Call mom",
-    "Workout for 30 minutes",
-    "Read a chapter of a book",
-  ];
+    const checkedCount = todos.filter((todo) => todo.isChecked).length;
+    const newProgress = Math.floor((checkedCount / todos.length) * 100);
+    setProgress(newProgress);
+  };
 
   return (
     <>
-      <h2>Todo</h2>
-      <input
-        type="number"
-        placeholder="Change progress"
-        onChange={handleChange}
-        value={progress}
-      />
-
       <article className="todo">
         <h2>My Todos:</h2>
         {todos.map((todo, index) => (
-          <Checkbox key={index} title={todo} big={true} />
+          <Checkbox
+            key={index}
+            title={todo.title}
+            isChecked={todo.isChecked}
+            big={true}
+            onChange={() => handleCheckboxChange(index)}
+          />
         ))}
+        <ProgressBar title="Progress" percentage={progress} color={"green"} />
       </article>
-      <ProgressBar title="Progress" percentage={progress} color={"green"} />
-      {/* <ProgressBar title="Step 2" percentage={progress} color={"red"} />
-      <ProgressBar title="Step 3" percentage={progress} color={"blue"} /> */}
     </>
   );
-}
+};
 
 export default Todo;

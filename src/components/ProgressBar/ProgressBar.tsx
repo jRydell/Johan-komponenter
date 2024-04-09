@@ -24,7 +24,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     <>
       <div className="ProgressBar">
         <h2>
-          {title}: {progress}
+          {title}: {progress}%
         </h2>
         <div className="progress-bar-container">
           <div
