@@ -5,21 +5,29 @@ import confetti from "https://esm.run/canvas-confetti@1";
 
 const Todo = () => {
   const [todos, setTodos] = useState([
-    { title: "Finish homework", isChecked: false },
+    { title: "Workout for 30 minutes", isChecked: false },
+    { title: "Read a chapter of a book", isChecked: false },
     { title: "Go grocery shopping", isChecked: false },
     { title: "Call mom", isChecked: false },
+    { title: "Finish homework", isChecked: false },
     { title: "Workout for 30 minutes", isChecked: false },
-    { title: "Read a chapter of a book", isChecked: false },
     { title: "Call mom", isChecked: false },
-    { title: "Workout for 30 minutes", isChecked: false },
     { title: "Read a chapter of a book", isChecked: false },
-    { title: "Read a chapter of a book", isChecked: false },
+    { title: "Clean the house", isChecked: false },
+    { title: "Plan next week's schedule", isChecked: false },
+    { title: "Write in journal", isChecked: false },
+    { title: "Learn a new recipe", isChecked: false },
   ]);
   const [progress, setProgress] = useState(0);
 
   const handleCheckboxChange = (index: number) => {
-    todos[index].isChecked = !todos[index].isChecked;
-    setTodos([...todos]);
+    setTodos((todos) => {
+      todos[index] = {
+        ...todos[index],
+        isChecked: !todos[index].isChecked,
+      };
+      return [...todos];
+    });
 
     const checkedCount = todos.filter((todo) => todo.isChecked).length;
     const newProgress = Math.floor((checkedCount / todos.length) * 100);
@@ -36,7 +44,7 @@ const Todo = () => {
   return (
     <>
       <article className="todo">
-        <h2>My Todos:</h2>
+        <h2>Todos:</h2>
         {todos.map((todo, index) => (
           <Checkbox
             key={index}
